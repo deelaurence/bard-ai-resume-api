@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { Configuration, OpenAIApi } from "openai";
 import express from "express";
 import multer from "multer";
@@ -30,7 +32,7 @@ const upload = multer({
 });
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey:process.env.apiKey,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -89,8 +91,6 @@ app.post("/image", async (req, res) => {
         res.send(error);
     }
 });
-import dotenv from 'dotenv';
-dotenv.config();
 
 // import bardBot from "bard-bot";
 // const Bard = bardBot.Bard
