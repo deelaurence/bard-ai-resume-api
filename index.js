@@ -32,7 +32,7 @@ const upload = multer({
 });
 
 const configuration = new Configuration({
-    apiKey:process.env.apiKey,
+    apiKey: process.env.apiKey,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -64,6 +64,9 @@ const playgroundFunction = async (text) => {
     });
     return response.data;
 };
+app.get("/", (req, res) => {
+    res.json({ message: "Hello Bard" })
+})
 app.post("/playground", async (req, res) => {
     try {
         const { prompt } = req.body;
